@@ -1,0 +1,10 @@
+com\veeva\automation\framework\driver\EdgeDriverManager.class
+com\veeva\automation\framework\utils\DependencyInjectionConfiguration2.class
+com\veeva\automation\framework\driver\ChromeDriverManager.class
+com\veeva\automation\framework\driver\FirefoxDriverManager.class
+com\veeva\automation\framework\driver\BrowserDriver.class
+com\veeva\automation\framework\utils\PageObjectFactory.class
+com\veeva\automation\framework\utils\ExtentReportManager.class
+com\veeva\automation\framework\hooks\Hooks.class
+com\veeva\automation\framework\utils\DependencyInjectionConfiguration.class
+com\veeva\automation\framework\driver\WebDriverFactory.class

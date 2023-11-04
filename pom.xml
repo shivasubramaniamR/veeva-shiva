@@ -1,0 +1,138 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.veeva</groupId>
+	<artifactId>shiva.assessment</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>automation-framework</module>
+		<module>core-product-tests</module>
+		<module>derived-product1-tests</module>
+		<module>derived-product2-tests</module>
+	</modules>
+	<properties>
+		<!-- Properties for libraries versions -->
+		<selenium.version>4.1.0</selenium.version>
+		<cucumber.version>7.0.0</cucumber.version>
+		<testng.version>7.4.0</testng.version>
+		<picco.version>7.0.0</picco.version>
+		<surefire.version>3.0.0-M5</surefire.version>
+		<webdrivermanager.version>5.5.3</webdrivermanager.version>
+		<log4j-api.version>2.17.0</log4j-api.version>
+		<log4j-core.version>2.17.0</log4j-core.version>
+		<extentreports.version>5.1.0</extentreports.version>
+		<extentreports-adapter.version>1.2.0</extentreports-adapter.version>
+
+		<browser>chrome</browser>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>chrome</id>
+			<properties>
+				<browser>chrome</browser>
+			</properties>
+		</profile>
+		<profile>
+			<id>firefox</id>
+			<properties>
+				<browser>firefox</browser>
+			</properties>
+		</profile>
+		<profile>
+			<id>edge</id>
+			<properties>
+				<browser>edge</browser>
+			</properties>
+		</profile>
+
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire.version}</version>
+				<configuration>
+					<systemPropertyVariables>
+						<browser>${browser}</browser>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<dependencyManagement>
+
+
+		<dependencies>
+			<!-- Selenium dependencies -->
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-java</artifactId>
+				<version>${selenium.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>tech.grasshopper</groupId>
+				<artifactId>extentreports-cucumber7-adapter</artifactId>
+				<version>${extentreports-adapter.version}</version>
+			</dependency>
+
+			<!-- Cucumber dependencies -->
+			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-java</artifactId>
+				<version>${cucumber.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-testng</artifactId>
+				<version>${cucumber.version}</version>
+			</dependency>
+
+			<!-- TestNG -->
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng.version}</version>
+			</dependency>
+
+			<!--Picco Container -->
+			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-picocontainer</artifactId>
+				<version>${picco.version}</version>
+			</dependency>
+
+			<!-- WebDriver Manager -->
+			<dependency>
+				<groupId>io.github.bonigarcia</groupId>
+				<artifactId>webdrivermanager</artifactId>
+				<version>${webdrivermanager.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>${log4j-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${log4j-core.version}</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+			<dependency>
+				<groupId>com.aventstack</groupId>
+				<artifactId>extentreports</artifactId>
+				<version>${extentreports.version}</version>
+			</dependency>
+
+
+		</dependencies>
+	</dependencyManagement>
+</project>
