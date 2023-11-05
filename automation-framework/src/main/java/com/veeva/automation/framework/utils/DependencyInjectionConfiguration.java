@@ -20,17 +20,12 @@ public class DependencyInjectionConfiguration {
         this.driver = webDriverFactory.getDriver();
         
         container.addComponent(WebDriver.class, this.driver);
-        //this.pageObjectFactory = new PageObjectFactory(this.driver,container);
         container.addComponent(PageObjectFactory.class, new PageObjectFactory(driver, container));
-        //container.addComponent(PageObjectFactory.class, new PageObjectFactory(this.driver));
         container.addComponent(WebDriverUtils.class, new WebDriverUtils(this.driver));
-        
-
-         
+            
     }
     
     public WebDriver getDriver() {
-       // return this.driver;
     	return container.getComponent(WebDriver.class);
     }
     
@@ -39,10 +34,16 @@ public class DependencyInjectionConfiguration {
     }
 
 
+    /**
+     * 
+     * @param <T>  - Generic Type to handle all types and also to ensure Type Checks
+     * @param pageClass - Page Class needs to be passed
+     * @return
+     */
     public <T> T getPage(Class<T> pageClass) {
         PageObjectFactory pageObjectFactory = this.container.getComponent(PageObjectFactory.class);
         return pageObjectFactory.create(pageClass);
     }
 
-    // Other configurations...
+   
 }

@@ -13,6 +13,11 @@
 			<artifactId>selenium-java</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
 		<!-- Cucumber for Java -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -24,10 +29,10 @@
 			<artifactId>extentreports</artifactId>
 		</dependency>
 
-			<dependency>
-				<groupId>tech.grasshopper</groupId>
-				<artifactId>extentreports-cucumber7-adapter</artifactId>
-			</dependency>
+		<dependency>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber7-adapter</artifactId>
+		</dependency>
 
 		<!-- Cucumber for TestNG -->
 		<dependency>
@@ -58,7 +63,12 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.veeva</groupId>
+			<artifactId>automation-framework</artifactId>
+			<version>0.0.1-SNAPSHOT</version> <!-- use the correct version -->
 		</dependency>
 	</dependencies>
 

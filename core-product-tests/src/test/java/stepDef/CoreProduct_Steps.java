@@ -1,10 +1,12 @@
 package stepDef;
 
 
-import org.openqa.selenium.WebDriver;
+import java.io.IOException;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 import com.veeva.automation.framework.utils.DependencyInjectionConfiguration;
-import com.veeva.automation.framework.utils.ExtentReportManager;
+import com.veeva.automation.framework.utils.JsonDataLoader;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -13,20 +15,26 @@ import io.cucumber.java.en.When;
 import pages.CoreProduct;
 
 public class CoreProduct_Steps {
-
-	private WebDriver driver;
+	
     private CoreProduct coreProduct;
+    private JsonNode testData;
     
 
     public CoreProduct_Steps(DependencyInjectionConfiguration diConfig) {
-        this.driver = diConfig.getDriver();
         this.coreProduct = diConfig.getPage(CoreProduct.class);
+        try {
+            // Load the test data as a JsonNode
+            this.testData = JsonDataLoader.loadTestData(System.getProperty("user.dir")+"/src/test/resources/testData/TestCase2_CP.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     
     }
 
+    //below are the steps for the TestCase1
     @Given("I am on the NBA Warriors homepage")
     public void iAmOnTheNBAWarriorsHomepage() {
-    	coreProduct.navigateToHomePage("https://www.nba.com/warriors");
+    	coreProduct.navigateToHomePage(this.testData.get("url").asText());
     }
 
     @When("I navigate to the Men Jackets section")
@@ -49,6 +57,8 @@ public class CoreProduct_Steps {
     	coreProduct.attachFileToReport();
     }
     
+    
+  //below are the steps for the TestCase2
     @When("I hover over the menu item {string}")
     public void iHoverOverTheMenuItem(String menuItem) {
     	coreProduct.hoverOnMenuItem(menuItem);

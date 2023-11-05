@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.veeva.automation.framework.utils.ExtentReportManager;
+import com.veeva.automation.framework.utils.StepLogger;
 import com.veeva.automation.framework.utils.WebDriverUtils;
 
 public class CoreProduct {
@@ -14,22 +14,23 @@ public class CoreProduct {
     private WebDriver driver;
     private final WebDriverUtils webDriverUtils;
     
+    /**
+	 * 
+	 * @param driver         - Reference for the browser
+	 * @param webDriverUtils - Reference for the driver utilities
+	 */
+    
     public CoreProduct(WebDriver driver,WebDriverUtils webDriverUtils) {
         this.driver = driver;
         this.webDriverUtils = webDriverUtils;
     }
 
-    public void navigateToHomePage(String url) {
-    	System.out.println("driver details = "+driver);
-        driver.get(url);
-        webDriverUtils.acceptCookiesIfDisplayed(cookieButton);
-        webDriverUtils.closeAlerts();
-    }
     
-    @FindBy(xpath = "(//span[text()='Shop'])[1]") // Replace with actual selector
+    //below are the locators for TestCase 1 and TestCase 2 
+    @FindBy(xpath = "(//span[text()='Shop'])[1]") 
     private WebElement shopMenu;
     
-    @FindBy(xpath = "//li[@role='menuitem']//li[@role='menuitem']//a[@title=\"Men's\"]") // Replace with actual selector
+    @FindBy(xpath = "//li[@role='menuitem']//li[@role='menuitem']//a[@title=\"Men's\"]") 
     private WebElement shopMenuMen;
     
     @FindBy(xpath = "//button[text()='I Accept']") 
@@ -47,12 +48,18 @@ public class CoreProduct {
     @FindBy(xpath = "//div[@class='ColumnsComponents_container__YMzra']/div[div[div[h3[text()='VIDEOS']]]]/div/div/div/ul/li//time") 
     private List<WebElement> videosCountDaysCount;
     
-    
+    /***
+	 * 
+	 * @param url - This is the URL for the Derived Product 2
+	 */
 
-    // Other WebElements and methods...
+    public void navigateToHomePage(String url) {
+        driver.get(url);
+        webDriverUtils.acceptCookiesIfDisplayed(cookieButton);
+        webDriverUtils.closeAlerts();
+    }
 
     public void navigateToMensJackets() {
-        // Click shop menu, then men's jackets
     	 webDriverUtils.hoverOverElement(shopMenu);
     	 webDriverUtils.hoverOverElement(shopMenuMen);
     }
@@ -80,10 +87,11 @@ public class CoreProduct {
     }
 
     public void countVideoFeeds() {
-    	ExtentReportManager.logToReport("Total Videos Count is "+webDriverUtils.webElementsSize(videosCount));
-    }
+    	
+    	StepLogger.setStepMessage("Total Videos Count is "+webDriverUtils.webElementsSize(videosCount));
+      }
 
     public void countVideoFeedsWithDuration(int days) {
-    	ExtentReportManager.logToReport("Total Videos Count that are 3 days old are "+webDriverUtils.countElementsOlderThanDays(videosCountDaysCount,days));
+    	StepLogger.setStepMessage("Total Videos Count that are "+days+" days old are "+webDriverUtils.countElementsOlderThanDays(videosCountDaysCount,days));
     }
 }

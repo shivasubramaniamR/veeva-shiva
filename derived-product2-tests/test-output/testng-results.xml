@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-11-05T22:44:44 IST" name="Default suite" finished-at="2023-11-05T22:45:06 IST" duration-ms="21459">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@6f1de4c7]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2023-11-05T22:44:44 IST" name="Default test" finished-at="2023-11-05T22:45:06 IST" duration-ms="21459">
+      <class name="runner.TestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@6f1de4c7]" started-at="2023-11-05T22:44:44 IST" name="setUpClass" finished-at="2023-11-05T22:44:45 IST" duration-ms="876" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@10ad20cb]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@6f1de4c7]" started-at="2023-11-05T22:44:45 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-11-05T22:45:05 IST" duration-ms="20166" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Collect and check for duplicate footer hyperlinks on DP2 home page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Optional[Footer Hyperlinks Collection and Duplication Check for DP2]"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Expected No Duplicate Links but Found Duplicate links[https://www.nba.com/accessibility]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Expected No Duplicate Links but Found Duplicate links[https://www.nba.com/accessibility]
+at pages.DerivedProduct2.reportDuplicateHyperlinks(DerivedProduct2.java:70)
+at stepDef.DerivedProduct2_Steps.i_report_duplicate_hyperlinks(DerivedProduct2_Steps.java:56)
+at ✽.I report if any duplicate hyperlinks are present(file:///D:/Technology/shiva/framework/shiva.assessment/derived-product2-tests/src/test/resources/features/TestCase4_DP2.feature:11)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@6f1de4c7]" started-at="2023-11-05T22:45:05 IST" name="tearDownClass" finished-at="2023-11-05T22:45:06 IST" duration-ms="371" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- runner.TestRunner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

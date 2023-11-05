@@ -1,0 +1,16 @@
+{
+	"url":"https://www.nba.com/sixers/",
+	"slides":"4",
+	"expectedTitles": [
+    "Sixers Win Again, Beat Suns Saturday",
+    "23-24 City Edition Unveiled",
+    "Maxey Named Player of the Week",
+    "23-24 Single Game Tickets Are On Sale Now"
+  ],
+    "expectedDuration":[
+    "4",
+    "10",
+    "10",
+    "10"
+   ]
+}

@@ -1,3 +1,2 @@
-stepDef\HomePageSteps.class
 stepDef\CoreProduct_Steps.class
 runner\TestRunner.class

@@ -1,3 +1,6 @@
+# Author: Shivasubramaniam SR
+# Date: 2023-11-05
+
 Feature: NBA Warriors Shop Men Jackets
 
   Scenario: Store and report prices, titles, and top seller messages of men jackets

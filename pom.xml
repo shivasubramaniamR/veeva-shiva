@@ -22,7 +22,7 @@
 		<log4j-core.version>2.17.0</log4j-core.version>
 		<extentreports.version>5.1.0</extentreports.version>
 		<extentreports-adapter.version>1.7.0</extentreports-adapter.version>
-
+		<jackson.version>2.13.3</jackson.version>
 		<browser>chrome</browser>
 	</properties>
 
@@ -59,13 +59,6 @@
 					<systemPropertyVariables>
 						<browser>${browser}</browser>
 					</systemPropertyVariables>
-					<properties>
-						<property>
-							<name>glue</name>
-							<!-- Ensure this is the correct package for the glue code -->
-							<value>com.veeva.automation.framework.hooks</value>
-						</property>
-					</properties>
 				</configuration>
 
 
@@ -84,6 +77,15 @@
 				<artifactId>selenium-java</artifactId>
 				<version>${selenium.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+
+
 
 			<dependency>
 				<groupId>tech.grasshopper</groupId>

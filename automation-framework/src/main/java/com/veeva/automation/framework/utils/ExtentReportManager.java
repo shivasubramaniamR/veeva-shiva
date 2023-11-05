@@ -7,42 +7,44 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtentReportManager {
     private static ExtentReports extent;
-    private static ExtentTest test;
+    private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
-    public static ExtentReports getReporter() {
+    public static synchronized ExtentReports getReporter() {
         if (extent == null) {
             ExtentSparkReporter spark = new ExtentSparkReporter("extent-report.html");
+            
             extent = new ExtentReports();
             extent.attachReporter(spark);
         }
         return extent;
     }
     
-    public static void setTest(ExtentTest testInstance) {
-        test = testInstance;
+    /**
+     * 
+     * @param testName - Name of the Test
+     */
+    public static synchronized void startTest(String testName) {
+        ExtentTest extentTest = getReporter().createTest(testName);
+        test.set(extentTest);
     }
 
+    /**
+     * 
+     * @param message - Custom message to log
+     */
     public static void logToReport(String message) {
         System.out.println("Logging details - " + message);
-        if (test != null) {
-            try {
-                test.log(Status.INFO, message);
-            } catch (Exception e) {
-                System.err.println("Error logging to ExtentReport: " + e.getMessage());
-                // You might want to log the stack trace or handle the exception as needed
-            }
-        } else {
-            System.err.println("ExtentTest instance is null. Unable to log to ExtentReports.");
-        }
+        getTest().log(Status.INFO, message);
     }
 
-    // This should be called after all the tests have completed
-    public static void finalizeReport() {
-        if (extent != null) {
-            extent.flush();
-        }
+    public static ExtentTest getTest() {
+        return test.get();
     }
 
-    
-    
+    public static synchronized void endTest() {
+        if (getReporter() != null && getTest() != null) {
+            getReporter().flush();
+        }
+        test.remove();
+    }
 }
