@@ -1,10 +1,12 @@
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\driver\BrowserDriver.java
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\utils\DependencyInjectionConfiguration2.java
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\utils\PageObjectFactory.java
+D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\utils\WebDriverUtils.java
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\driver\ChromeDriverManager.java
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\utils\DependencyInjectionConfiguration.java
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\driver\EdgeDriverManager.java
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\driver\WebDriverFactory.java
+D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\utils\BaseTestRunner.java
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\hooks\Hooks.java
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\utils\ExtentReportManager.java
 D:\Technology\shiva\framework\shiva.assessment\automation-framework\src\main\java\com\veeva\automation\framework\driver\FirefoxDriverManager.java

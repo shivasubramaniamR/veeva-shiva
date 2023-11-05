@@ -23,9 +23,26 @@ public class ExtentReportManager {
     }
 
     public static void logToReport(String message) {
+        System.out.println("Logging details - " + message);
         if (test != null) {
-            test.log(Status.INFO, message);
+            try {
+                test.log(Status.INFO, message);
+            } catch (Exception e) {
+                System.err.println("Error logging to ExtentReport: " + e.getMessage());
+                // You might want to log the stack trace or handle the exception as needed
+            }
+        } else {
+            System.err.println("ExtentTest instance is null. Unable to log to ExtentReports.");
         }
     }
-}
 
+    // This should be called after all the tests have completed
+    public static void finalizeReport() {
+        if (extent != null) {
+            extent.flush();
+        }
+    }
+
+    
+    
+}

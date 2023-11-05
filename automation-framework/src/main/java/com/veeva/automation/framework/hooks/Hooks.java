@@ -29,6 +29,7 @@ public class Hooks {
 
     @Before
     public void beforeScenario(Scenario scenario) {
+    	
         test = ExtentReportManager.getReporter().createTest(scenario.getName());
         ExtentReportManager.setTest(test);
     }
@@ -43,10 +44,19 @@ public class Hooks {
             test.log(Status.PASS, "Test Passed");
         }
         ExtentReportManager.getReporter().flush();
+        
+    }
+    
+    @After
+    public void closeBrowser() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
     
     @AfterStep
     public void afterEachStep(Scenario scenario) throws IOException {
+    	System.out.println("Inside screenshot step");
        
     	File sourcePath= 	((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);

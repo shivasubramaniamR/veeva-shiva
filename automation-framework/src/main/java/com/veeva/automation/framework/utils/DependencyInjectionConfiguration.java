@@ -10,7 +10,7 @@ public class DependencyInjectionConfiguration {
 
     private final MutablePicoContainer container;
     private final WebDriver driver;
-
+    
     public DependencyInjectionConfiguration() {
         container = new DefaultPicoContainer();
         
@@ -19,15 +19,23 @@ public class DependencyInjectionConfiguration {
         WebDriverFactory webDriverFactory = container.getComponent(WebDriverFactory.class);
         this.driver = webDriverFactory.getDriver();
         
-        //container.addComponent(WebDriver.class, this.driver);
-
-        container.addComponent(PageObjectFactory.class, new PageObjectFactory(this.driver));
+        container.addComponent(WebDriver.class, this.driver);
+        //this.pageObjectFactory = new PageObjectFactory(this.driver,container);
+        container.addComponent(PageObjectFactory.class, new PageObjectFactory(driver, container));
+        //container.addComponent(PageObjectFactory.class, new PageObjectFactory(this.driver));
+        container.addComponent(WebDriverUtils.class, new WebDriverUtils(this.driver));
+        
 
          
     }
     
     public WebDriver getDriver() {
-        return this.driver;
+       // return this.driver;
+    	return container.getComponent(WebDriver.class);
+    }
+    
+    public WebDriverUtils getWebDriverUtils() {
+        return container.getComponent(WebDriverUtils.class);
     }
 
 
